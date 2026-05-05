@@ -139,6 +139,101 @@ ul { list-style: none; padding: 0; }
 
 .product-card-footer { margin-top: auto; }
 
+/* ── Pricing ── */
+.pricing-section { padding: 5rem 2rem; background: var(--card-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+.pricing-app-block { margin-top: 3rem; }
+.pricing-app-block + .pricing-app-block { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); }
+
+.pricing-app-title {
+  display: flex; align-items: center; gap: .75rem;
+  font-size: 1.2rem; font-weight: 800; margin-bottom: 1.5rem;
+}
+.pricing-app-icon { font-size: 1.4rem; line-height: 1; }
+.pricing-app-sub { font-size: .85rem; font-weight: 400; color: var(--text-muted); margin-left: .25rem; }
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.pricing-card {
+  position: relative;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex; flex-direction: column;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.pricing-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+
+.pricing-card-popular {
+  border: 2px solid var(--primary);
+  box-shadow: 0 6px 24px rgba(124,58,237,.15);
+}
+.pricing-card-popular-teal {
+  border-color: var(--teal);
+  box-shadow: 0 6px 24px rgba(15,118,110,.15);
+}
+
+.pricing-popular-badge {
+  position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+  background: var(--primary); color: #fff;
+  font-size: .7rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+  padding: .2rem .75rem; border-radius: 999px; white-space: nowrap;
+}
+.pricing-popular-badge-teal { background: var(--teal); }
+
+.pricing-tier { font-weight: 700; font-size: .9rem; color: var(--text); margin-bottom: .6rem; }
+
+.pricing-price { margin-bottom: .75rem; line-height: 1; }
+.pricing-amount { font-size: 2rem; font-weight: 900; color: var(--text); }
+.pricing-period { font-size: .85rem; color: var(--text-muted); margin-left: .1rem; }
+
+.pricing-features {
+  flex: 1;
+  display: flex; flex-direction: column; gap: .4rem;
+  margin-bottom: 1.25rem;
+}
+.pricing-features li {
+  font-size: .8rem; color: var(--text-muted); padding-left: 1rem; position: relative;
+}
+.pricing-features li::before { content: '✓'; position: absolute; left: 0; color: #22c55e; font-weight: 700; }
+
+.btn-outline-primary {
+  display: inline-block; width: 100%; text-align: center;
+  padding: .55rem 1rem; border-radius: 8px;
+  font-size: .875rem; font-weight: 600; cursor: pointer;
+  border: 2px solid var(--primary); color: var(--primary); background: transparent;
+  transition: background var(--transition), color var(--transition);
+}
+.btn-outline-primary:hover { background: var(--primary); color: #fff; }
+
+.btn-outline-teal {
+  display: inline-block; width: 100%; text-align: center;
+  padding: .55rem 1rem; border-radius: 8px;
+  font-size: .875rem; font-weight: 600; cursor: pointer;
+  border: 2px solid var(--teal); color: var(--teal); background: transparent;
+  transition: background var(--transition), color var(--transition);
+}
+.btn-outline-teal:hover { background: var(--teal); color: #fff; }
+
+.pricing-card .btn-primary,
+.pricing-card .btn-teal {
+  display: block; width: 100%; text-align: center;
+  padding: .55rem 1rem; font-size: .875rem;
+}
+
+.pricing-addon-note {
+  margin-top: 1.25rem;
+  font-size: .85rem; color: var(--text-muted);
+  text-align: center;
+}
+
 /* ── About ── */
 .about { padding: 5rem 2rem; background: var(--card-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .about-inner {
@@ -177,6 +272,8 @@ ul { list-style: none; padding: 0; }
 @media (max-width: 700px) {
   .hero { padding: 4rem 1.25rem; }
   .products, .about, .contact { padding: 3rem 1.25rem; }
+  .pricing-section { padding: 3rem 1.25rem; }
+  .pricing-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
   .about-inner { grid-template-columns: 1fr; gap: 2rem; }
   .about-stats { justify-content: center; }
   .footer-inner { flex-direction: column; gap: .75rem; text-align: center; }
