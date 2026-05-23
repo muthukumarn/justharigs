@@ -40,8 +40,10 @@ ul { list-style: none; padding: 0; }
   transition: opacity var(--transition), transform var(--transition);
 }
 .btn:hover { opacity: .88; transform: translateY(-1px); }
-.btn-primary { background: var(--primary); color: #fff; }
-.btn-teal    { background: var(--teal);    color: #fff; }
+.btn-primary  { background: var(--primary); color: #fff; }
+.btn-teal     { background: var(--teal);    color: #fff; }
+.btn-purple   { background: #764BA2;        color: #fff; }
+.btn-slate    { background: #1a1a2e;        color: #fff; }
 
 /* ── Header ── */
 .site-header {
