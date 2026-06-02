@@ -7,117 +7,89 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    .status-section {
-      padding: 4rem 2rem 6rem;
-    }
-    .status-inner {
-      max-width: 820px;
-      margin: 0 auto;
-    }
+    .status-section { padding: 4rem 2rem 6rem; }
+    .status-inner   { max-width: 820px; margin: 0 auto; }
+
     .status-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem;
     }
-    .status-header h1 {
-      font-size: 1.75rem;
-      font-weight: 800;
-    }
+    .status-header h1 { font-size: 1.75rem; font-weight: 800; }
     .status-meta {
-      font-size: .85rem;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
+      font-size: .85rem; color: var(--text-muted);
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
     }
-    #last-checked {
-      font-variant-numeric: tabular-nums;
-    }
+    #last-checked { font-variant-numeric: tabular-nums; }
+
     .btn-refresh {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      padding: .5rem 1.1rem;
-      border-radius: 8px;
-      font-size: .9rem;
-      font-weight: 600;
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      transition: opacity .18s;
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .5rem 1.1rem; border-radius: 8px;
+      font-size: .9rem; font-weight: 600;
+      background: var(--primary); color: #fff;
+      border: none; cursor: pointer; transition: opacity .18s;
     }
-    .btn-refresh:hover { opacity: .85; }
+    .btn-refresh:hover    { opacity: .85; }
     .btn-refresh:disabled { opacity: .5; cursor: not-allowed; }
     .spin { display: inline-block; animation: spin .7s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ── Service blocks ── */
+    /* ── Token bar ── */
+    .token-bar {
+      display: flex; align-items: center; gap: .6rem; flex-wrap: wrap;
+      background: #F9FAFB; border: 1px solid var(--border);
+      border-radius: 8px; padding: .6rem .9rem; margin-bottom: 1.75rem;
+      font-size: .82rem;
+    }
+    .token-bar label { font-weight: 600; color: var(--text-muted); white-space: nowrap; }
+    .token-bar input {
+      flex: 1; min-width: 180px; font-size: .82rem; font-family: 'SF Mono','Fira Code',monospace;
+      border: 1px solid var(--border); border-radius: 6px;
+      padding: .3rem .6rem; background: #fff; color: var(--text);
+    }
+    .token-bar input:focus { outline: none; border-color: var(--primary); }
+    .btn-token-save {
+      padding: .3rem .8rem; border-radius: 6px; font-size: .82rem; font-weight: 600;
+      background: var(--primary); color: #fff; border: none; cursor: pointer;
+      white-space: nowrap; transition: opacity .18s;
+    }
+    .btn-token-save:hover { opacity: .85; }
+    .token-status { font-size: .78rem; color: var(--text-muted); }
+
+    /* ── Service cards ── */
     .service-block {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      margin-bottom: 1rem;
-      overflow: hidden;
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: var(--radius); margin-bottom: 1rem; overflow: hidden;
     }
     .service-head {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      padding: 1rem 1.25rem;
-      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: .75rem;
+      padding: 1rem 1.25rem; border-bottom: 1px solid var(--border);
     }
-    .service-icon { font-size: 1.3rem; line-height: 1; }
-    .service-name { font-weight: 700; font-size: 1rem; }
-    .service-tagline { font-size: .82rem; color: var(--text-muted); margin-top: .1rem; }
-    .service-rows {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-    @media (max-width: 520px) {
-      .service-rows { grid-template-columns: 1fr; }
-    }
+    .service-icon   { font-size: 1.3rem; line-height: 1; }
+    .service-name   { font-weight: 700; font-size: 1rem; }
+    .service-tagline{ font-size: .82rem; color: var(--text-muted); margin-top: .1rem; }
+
+    .service-rows { display: grid; grid-template-columns: 1fr 1fr; }
+    @media (max-width: 520px) { .service-rows { grid-template-columns: 1fr; } }
+
     .env-row {
       padding: .9rem 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: .75rem;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem;
     }
-    .env-row + .env-row {
-      border-left: 1px solid var(--border);
-    }
+    .env-row + .env-row { border-left: 1px solid var(--border); }
     @media (max-width: 520px) {
-      .env-row + .env-row {
-        border-left: none;
-        border-top: 1px solid var(--border);
-      }
+      .env-row + .env-row { border-left: none; border-top: 1px solid var(--border); }
     }
     .env-label {
-      font-size: .75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      color: var(--text-muted);
-      margin-bottom: .3rem;
+      font-size: .75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .06em; color: var(--text-muted); margin-bottom: .3rem;
     }
-    .env-url {
-      font-size: .78rem;
-      color: var(--text-muted);
-    }
+    .env-url { font-size: .78rem; color: var(--text-muted); }
+
+    /* ── Pills ── */
     .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: .35rem;
-      padding: .25rem .75rem;
-      border-radius: 999px;
-      font-size: .8rem;
-      font-weight: 600;
-      white-space: nowrap;
+      display: inline-flex; align-items: center; gap: .35rem;
+      padding: .25rem .75rem; border-radius: 999px;
+      font-size: .8rem; font-weight: 600; white-space: nowrap;
     }
     .pill-loading { background: #F3F4F6; color: #6B7280; }
     .pill-up      { background: #D1FAE5; color: #065F46; }
@@ -125,49 +97,41 @@
     .pill-cors    { background: #FEF3C7; color: #92400E; }
     .pill-skip    { background: #F3F4F6; color: #9CA3AF; }
     .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-    .dot-up   { background: #10B981; }
-    .dot-down { background: #EF4444; }
-    .dot-cors { background: #F59E0B; }
-    .dot-skip { background: #D1D5DB; }
+    .dot-up      { background: #10B981; }
+    .dot-down    { background: #EF4444; }
+    .dot-cors    { background: #F59E0B; }
+    .dot-skip    { background: #D1D5DB; }
     .dot-loading { background: #D1D5DB; animation: pulse .9s ease-in-out infinite alternate; }
     @keyframes pulse { to { opacity: .3; } }
 
-    .version-chip {
-      font-size: .72rem;
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      background: rgba(0,0,0,.05);
-      color: var(--text-muted);
-      padding: .15rem .5rem;
-      border-radius: 4px;
-      margin-top: .25rem;
-      display: inline-block;
+    /* ── Version rows ── */
+    .version-rows { margin-top: .4rem; display: flex; flex-direction: column; gap: .2rem; }
+    .version-row  { display: flex; align-items: center; gap: .4rem; font-size: .75rem; }
+    .ver-label    { color: var(--text-muted); width: 3.5rem; flex-shrink: 0; }
+    .sha-chip {
+      font-family: 'SF Mono','Fira Code',monospace;
+      background: rgba(0,0,0,.05); color: var(--text);
+      padding: .1rem .45rem; border-radius: 4px; font-size: .72rem;
     }
+    .sha-match   { background: #D1FAE5; color: #065F46; }
+    .sha-behind  { background: #FEF3C7; color: #92400E; }
+    .sha-unknown { background: #F3F4F6; color: #9CA3AF; }
     .db-chip {
-      font-size: .7rem;
-      font-weight: 600;
-      padding: .1rem .4rem;
-      border-radius: 4px;
-      margin-left: .3rem;
+      font-size: .7rem; font-weight: 600; padding: .1rem .4rem; border-radius: 4px;
     }
     .db-ok   { background: #D1FAE5; color: #065F46; }
     .db-warn { background: #FEF3C7; color: #92400E; }
 
     .cors-note {
-      margin-top: 2rem;
-      padding: 1rem 1.25rem;
-      background: #FFFBEB;
-      border: 1px solid #FDE68A;
-      border-radius: 8px;
-      font-size: .85rem;
-      color: #92400E;
-      line-height: 1.6;
+      margin-top: 2rem; padding: 1rem 1.25rem;
+      background: #FFFBEB; border: 1px solid #FDE68A;
+      border-radius: 8px; font-size: .85rem; color: #92400E; line-height: 1.6;
     }
     .cors-note strong { display: block; margin-bottom: .3rem; }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
   <header class="site-header">
     <div class="header-inner">
       <a href="/" class="logo">⚡ Justharigs</a>
@@ -177,7 +141,6 @@
     </div>
   </header>
 
-  <!-- STATUS -->
   <section class="status-section">
     <div class="status-inner">
 
@@ -194,18 +157,25 @@
         </div>
       </div>
 
+      <!-- GitHub token bar -->
+      <div class="token-bar">
+        <label>GitHub token</label>
+        <input type="password" id="gh-token-input" placeholder="ghp_… (stored in localStorage, never sent anywhere else)" />
+        <button class="btn-token-save" onclick="saveToken()">Save</button>
+        <span class="token-status" id="token-status"></span>
+      </div>
+
       <div id="services"></div>
 
       <div class="cors-note" id="cors-note" style="display:none">
         <strong>⚠️ CORS not configured for one or more services</strong>
         These APIs don't allow requests from this domain yet. Add <code>https://justharigs.com</code>
-        to the <code>FRONTEND_URL</code> / CORS origin list in each affected service to show live status here.
+        to the <code>CORS_EXTRA_ORIGINS</code> env var in each affected service.
       </div>
 
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-inner">
       <span>⚡ Justharigs &copy; 2026 &nbsp;·&nbsp; Harigs LLC</span>
@@ -222,69 +192,78 @@
   <script>
     const SERVICES = [
       {
-        icon:    '⚖️',
-        name:    'CaseDigest',
-        tagline: 'Case management for lawyers',
+        icon: '⚖️', name: 'CaseDigest', tagline: 'Case management for lawyers',
+        repo: 'muthukumarn/casedigest',
         envs: [
-          { label: 'Beta', url: 'https://casedigest.justharigs.com/api/health',   display: 'casedigest.justharigs.com' },
-          { label: 'Prod', url: 'https://justcasedigest.com/api/health',           display: 'justcasedigest.com' },
+          { label: 'Beta', url: 'https://casedigest.justharigs.com/api/health',  display: 'casedigest.justharigs.com' },
+          { label: 'Prod', url: 'https://justcasedigest.com/api/health',          display: 'justcasedigest.com' },
         ],
       },
       {
-        icon:    '🪑',
-        name:    'Seatable',
-        tagline: 'Smart seating for events',
+        icon: '🪑', name: 'Seatable', tagline: 'Smart seating for events',
+        repo: 'muthukumarn/seatable',
         envs: [
           { label: 'Beta', url: 'https://seatablebeta.justharigs.com/api/version', display: 'seatablebeta.justharigs.com' },
           { label: 'Prod', url: 'https://justseatable.com/api/version',            display: 'justseatable.com' },
         ],
       },
       {
-        icon:    '🏋️',
-        name:    'PureStrength Coach',
-        tagline: 'Platform for personal trainers',
+        icon: '🏋️', name: 'PureStrength Coach', tagline: 'Platform for personal trainers',
+        repo: 'muthukumarn/purestrength-coach',
         envs: [
           { label: 'Beta', url: 'https://api.purestrengthdev.justharigs.com/version', display: 'api.purestrengthdev.justharigs.com' },
           { label: 'Prod', url: 'https://api.justpurestrength.com/version',           display: 'api.justpurestrength.com' },
         ],
       },
       {
-        icon:    '🧘',
-        name:    'JustAsana',
-        tagline: 'Platform for yoga instructors',
+        icon: '🧘', name: 'JustAsana', tagline: 'Platform for yoga instructors',
+        repo: 'muthukumarn/purestrength-coach',
         envs: [
-          { label: 'Beta', url: null,                                    display: '—' },
-          { label: 'Prod', url: 'https://api.justasana.com/version',     display: 'api.justasana.com' },
+          { label: 'Beta', url: null,                                  display: '—' },
+          { label: 'Prod', url: 'https://api.justasana.com/version',   display: 'api.justasana.com' },
         ],
       },
     ];
 
-    // State: svcIdx → envIdx → result
-    const state = {};
-
-    function pill(svcIdx, envIdx) {
-      const id = `pill-${svcIdx}-${envIdx}`;
-      return document.getElementById(id);
+    // ── Token management ────────────────────────────────────────────────────────
+    function loadToken() {
+      const t = localStorage.getItem('gh_status_token') || '';
+      document.getElementById('gh-token-input').value = t ? '••••••••' : '';
+      document.getElementById('token-status').textContent = t ? '✓ token saved' : 'no token — git SHA comparison unavailable';
+      return t;
     }
 
-    function setPill(svcIdx, envIdx, type, text, version, db) {
-      const el = pill(svcIdx, envIdx);
-      if (!el) return;
-      const dotClass = { up: 'dot-up', down: 'dot-down', cors: 'dot-cors', skip: 'dot-skip', loading: 'dot-loading' }[type] || 'dot-skip';
-      const pillClass = { up: 'pill-up', down: 'pill-down', cors: 'pill-cors', skip: 'pill-skip', loading: 'pill-loading' }[type] || 'pill-skip';
-      let extra = '';
-      if (version) extra += `<div><span class="version-chip">${version}</span>${db != null ? `<span class="db-chip ${db === 'ok' ? 'db-ok' : 'db-warn'}">db ${db}</span>` : ''}</div>`;
-      el.parentElement.innerHTML = `
-        <span id="pill-${svcIdx}-${envIdx}" class="status-pill ${pillClass}">
-          <span class="dot ${dotClass}"></span>${text}
-        </span>
-        ${extra}
-      `;
+    function saveToken() {
+      const val = document.getElementById('gh-token-input').value.trim();
+      if (!val || val.startsWith('•')) return;
+      localStorage.setItem('gh_status_token', val);
+      document.getElementById('gh-token-input').value = '••••••••';
+      document.getElementById('token-status').textContent = '✓ saved';
     }
 
+    function getToken() { return localStorage.getItem('gh_status_token') || ''; }
+
+    // ── GitHub latest SHA ───────────────────────────────────────────────────────
+    const _gitCache = {};
+
+    async function fetchGitSha(repo) {
+      if (_gitCache[repo] !== undefined) return _gitCache[repo];
+      const token = getToken();
+      if (!token) { _gitCache[repo] = null; return null; }
+      try {
+        const headers = { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github.v3+json' };
+        const res = await fetch(`https://api.github.com/repos/${repo}/commits/master?per_page=1`, { headers });
+        if (!res.ok) { _gitCache[repo] = null; return null; }
+        const data = await res.json();
+        const sha = data.sha?.slice(0, 7) || null;
+        _gitCache[repo] = sha;
+        return sha;
+      } catch (_) { _gitCache[repo] = null; return null; }
+    }
+
+    // ── Render ──────────────────────────────────────────────────────────────────
     function render() {
-      const container = document.getElementById('services');
-      container.innerHTML = SERVICES.map((svc, si) => `
+      document.getElementById('services').innerHTML = SERVICES.map((svc, si) => `
         <div class="service-block">
           <div class="service-head">
             <span class="service-icon">${svc.icon}</span>
@@ -300,8 +279,8 @@
                   <div class="env-label">${env.label}</div>
                   <div class="env-url">${env.display}</div>
                 </div>
-                <div style="text-align:right">
-                  <span id="pill-${si}-${ei}" class="status-pill pill-loading">
+                <div id="cell-${si}-${ei}" style="text-align:right">
+                  <span class="status-pill pill-loading">
                     <span class="dot dot-loading"></span>${env.url ? 'Checking…' : '—'}
                   </span>
                 </div>
@@ -312,59 +291,103 @@
       `).join('');
     }
 
-    async function checkOne(svcIdx, envIdx, url) {
-      if (!url) { setPill(svcIdx, envIdx, 'skip', 'n/a', null, null); return; }
+    function setCell(si, ei, { type, label, version, db, gitSha }) {
+      const cell = document.getElementById(`cell-${si}-${ei}`);
+      if (!cell) return;
+
+      const dotClass  = { up:'dot-up', down:'dot-down', cors:'dot-cors', skip:'dot-skip' }[type] || 'dot-skip';
+      const pillClass = { up:'pill-up', down:'pill-down', cors:'pill-cors', skip:'pill-skip' }[type] || 'pill-skip';
+
+      let versionRows = '';
+      if (version) {
+        const deployedShort = version.slice(0, 7);
+        let shaClass = 'sha-unknown', shaTitle = '';
+        if (gitSha) {
+          if (deployedShort === gitSha) {
+            shaClass = 'sha-match'; shaTitle = 'Up to date';
+          } else {
+            shaClass = 'sha-behind'; shaTitle = `Latest in git: ${gitSha}`;
+          }
+        }
+        const dbBadge = db ? `<span class="db-chip ${db === 'ok' ? 'db-ok' : 'db-warn'}">db ${db}</span>` : '';
+        const gitRow = gitSha
+          ? `<div class="version-row"><span class="ver-label">git</span><span class="sha-chip sha-unknown" title="Latest on master">${gitSha}</span></div>`
+          : '';
+        versionRows = `
+          <div class="version-rows">
+            <div class="version-row">
+              <span class="ver-label">live</span>
+              <span class="sha-chip ${shaClass}" title="${shaTitle}">${deployedShort}</span>
+              ${dbBadge}
+            </div>
+            ${gitRow}
+          </div>`;
+      }
+
+      cell.innerHTML = `
+        <span class="status-pill ${pillClass}">
+          <span class="dot ${dotClass}"></span>${label}
+        </span>
+        ${versionRows}
+      `;
+    }
+
+    // ── Check one env ───────────────────────────────────────────────────────────
+    async function checkOne(si, ei, url, gitSha) {
+      if (!url) { setCell(si, ei, { type: 'skip', label: 'n/a' }); return; }
       try {
         const res = await fetch(url, { signal: AbortSignal.timeout(7000) });
-        if (!res.ok) { setPill(svcIdx, envIdx, 'down', `${res.status}`, null, null); return; }
+        if (!res.ok) { setCell(si, ei, { type: 'down', label: `${res.status}` }); return; }
         let version = null, db = null;
-        try {
-          const json = await res.json();
-          version = json.version || null;
-          db = json.db || null;
-        } catch (_) {}
-        setPill(svcIdx, envIdx, 'up', 'Up', version, db);
+        try { const j = await res.json(); version = j.version || null; db = j.db || null; } catch (_) {}
+        setCell(si, ei, { type: 'up', label: 'Up', version, db, gitSha });
       } catch (err) {
         const msg = err?.message || '';
         if (msg.includes('abort') || msg.includes('timeout')) {
-          setPill(svcIdx, envIdx, 'down', 'Timeout', null, null);
-        } else if (msg.includes('Failed to fetch') || msg.includes('NetworkError') || msg.includes('CORS') || msg.includes('fetch')) {
-          // Could be CORS or genuinely down — mark as cors? to indicate uncertainty
-          setPill(svcIdx, envIdx, 'cors', 'cors?', null, null);
-          document.getElementById('cors-note').style.display = '';
+          setCell(si, ei, { type: 'down', label: 'Timeout' });
         } else {
-          setPill(svcIdx, envIdx, 'down', 'Down', null, null);
+          setCell(si, ei, { type: 'cors', label: 'cors?' });
+          document.getElementById('cors-note').style.display = '';
         }
       }
     }
 
+    // ── Check all ───────────────────────────────────────────────────────────────
     async function checkAll() {
-      const btn = document.getElementById('btn-refresh');
+      const btn  = document.getElementById('btn-refresh');
       const icon = document.getElementById('refresh-icon');
       btn.disabled = true;
       icon.className = 'spin';
-      icon.textContent = '↻';
+      Object.keys(_gitCache).forEach(k => delete _gitCache[k]); // clear cache on manual refresh
+      document.getElementById('cors-note').style.display = 'none';
 
       render();
 
-      const promises = [];
+      // Fetch git SHAs and API health in parallel
+      const gitFetches = {};
+      SERVICES.forEach(svc => { gitFetches[svc.repo] = fetchGitSha(svc.repo); });
+
+      const checks = [];
       SERVICES.forEach((svc, si) => {
         svc.envs.forEach((env, ei) => {
-          promises.push(checkOne(si, ei, env.url));
+          checks.push(
+            gitFetches[svc.repo].then(gitSha => checkOne(si, ei, env.url, gitSha))
+          );
         });
       });
-      await Promise.allSettled(promises);
 
-      const now = new Date();
+      await Promise.allSettled(checks);
+
       document.getElementById('last-checked').textContent =
-        'Checked at ' + now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        'Checked at ' + new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
       btn.disabled = false;
       icon.className = '';
       icon.textContent = '↻';
     }
 
-    // Run on load
+    // ── Init ────────────────────────────────────────────────────────────────────
+    loadToken();
     checkAll();
   </script>
 
