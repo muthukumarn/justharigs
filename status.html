@@ -223,6 +223,14 @@
           { label: 'Prod', url: 'https://api.justasana.com/version',   display: 'api.justasana.com' },
         ],
       },
+      {
+        icon: '📱', name: 'CaseDigest Mobile', tagline: 'Android APK (sideload)',
+        repo: 'muthukumarn/casedigest-mobile',
+        envs: [
+          { label: 'Beta', url: 'https://casedigest.justharigs.com/api/download/android/info', display: 'casedigest.justharigs.com' },
+          { label: 'Prod', url: 'https://api.justcasedigest.com/api/download/android/info',    display: 'api.justcasedigest.com' },
+        ],
+      },
     ];
 
     // ── Token management ────────────────────────────────────────────────────────
@@ -339,7 +347,7 @@
         const res = await fetch(url, { signal: AbortSignal.timeout(7000) });
         if (!res.ok) { setCell(si, ei, { type: 'down', label: `${res.status}` }); return; }
         let version = null, db = null;
-        try { const j = await res.json(); version = j.version || null; db = j.db || null; } catch (_) {}
+        try { const j = await res.json(); version = j.version || j.commit || null; db = j.db || null; } catch (_) {}
         setCell(si, ei, { type: 'up', label: 'Up', version, db, gitSha });
       } catch (err) {
         const msg = err?.message || '';
