@@ -3,464 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex, nofollow" />
-  <title>Spain Trip Dashboard — Nov 21–28, 2026</title>
+  <title>Spain</title>
   <style>
-    :root {
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --border: #e2e8f0;
-      --text: #0f172a;
-      --muted: #475569;
-      --accent: #1d4ed8;
-      --accent-soft: #eff6ff;
-      --ok-bg: #dcfce7;
-      --ok-text: #166534;
-      --warn-bg: #fef3c7;
-      --warn-text: #92400e;
-      --plan-bg: #e0f2fe;
-      --plan-text: #075985;
-      --open-bg: #f1f5f9;
-      --open-text: #334155;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 24px 16px 48px;
-    }
-    header {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 20px 24px;
-      margin-bottom: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-    h1 {
-      margin: 0 0 4px;
-      font-size: 1.5rem;
-    }
-    .subtitle {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    .summary-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .pill {
-      background: var(--accent-soft);
-      color: var(--accent);
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-    .controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 16px;
-      align-items: center;
-    }
-    .controls input, .controls select {
-      padding: 9px 12px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: var(--surface);
-      font-size: 0.9rem;
-      color: var(--text);
-    }
-    .controls input {
-      flex: 1;
-      min-width: 220px;
-    }
-    .table-wrap {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow-x: auto;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-    }
-    th, td {
-      padding: 12px 14px;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
-    th {
-      background: #f1f5f9;
-      font-weight: 600;
-      color: #1e293b;
-      position: sticky;
-      top: 0;
-      white-space: nowrap;
-    }
-    tr:last-child td { border-bottom: none; }
-    tr:hover td { background: #f8fafc; }
-    .date-cell { font-weight: 600; white-space: nowrap; }
-    .city-cell { white-space: nowrap; color: var(--muted); font-weight: 500; }
-    .badge {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .badge-ok { background: var(--ok-bg); color: var(--ok-text); }
-    .badge-warn { background: var(--warn-bg); color: var(--warn-text); }
-    .badge-plan { background: var(--plan-bg); color: var(--plan-text); }
-    .badge-open { background: var(--open-bg); color: var(--open-text); }
-    a.ticket-link {
-      display: inline-block;
-      margin-top: 4px;
-      color: var(--accent);
-      font-weight: 600;
-      text-decoration: none;
-    }
-    a.ticket-link:hover { text-decoration: underline; }
-    .note {
-      display: block;
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: 0.84rem;
-    }
-    @media (max-width: 768px) {
-      th, td { padding: 10px; font-size: 0.84rem; }
-    }
+    body { margin: 0; font-family: sans-serif; background: #111; color: #eee; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    .box { background: #1e1e1e; border-radius: 10px; padding: 2.5rem; width: min(340px, 90vw); box-shadow: 0 4px 32px rgba(0,0,0,.5); }
+    h2 { margin: 0 0 1.5rem; font-size: 1.1rem; color: #ccc; text-align: center; }
+    input[type=password] { width: 100%; box-sizing: border-box; padding: .75rem 1rem; border: 1px solid #444; border-radius: 6px; background: #2a2a2a; color: #eee; font-size: 1rem; outline: none; }
+    input[type=password]:focus { border-color: #888; }
+    button { margin-top: 1rem; width: 100%; padding: .75rem; background: #4a90e2; border: none; border-radius: 6px; color: #fff; font-size: 1rem; cursor: pointer; }
+    button:hover { background: #357abd; }
+    .err { margin-top: .75rem; color: #e57373; font-size: .875rem; text-align: center; display: none; }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div>
-        <h1>Spain Trip Itinerary Dashboard</h1>
-        <p class="subtitle">Nov 21 – Nov 28, 2026 &middot; Seville &rarr; Madrid &rarr; Barcelona</p>
-      </div>
-      <div class="summary-pills">
-        <span class="pill">Flights Conf: MJIUCI / MN978</span>
-        <span class="pill">Renfe AVE: 7683802129976</span>
-        <span class="pill">5 Ticket PDFs Linked</span>
-      </div>
-    </header>
+<div class="box">
+  <h2>Enter password to continue</h2>
+  <input type="password" id="pw" placeholder="Password" autofocus />
+  <button onclick="unlock()">Unlock</button>
+  <div class="err" id="err">Incorrect password</div>
+</div>
+<script>
+const CIPHERTEXT = "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";
 
-    <div class="controls">
-      <input type="text" id="searchInput" placeholder="Search city, attraction, confirmation code, or notes..." />
-      <select id="cityFilter">
-        <option value="ALL">All Cities / Legs</option>
-        <option value="Seville">Seville</option>
-        <option value="Madrid">Madrid</option>
-        <option value="Barcelona">Barcelona</option>
-        <option value="Flight">Flights / Transit</option>
-      </select>
-      <select id="statusFilter">
-        <option value="ALL">All Statuses</option>
-        <option value="Confirmed">Confirmed</option>
-        <option value="Planned">Planned</option>
-        <option value="Attention">Needs Booking / Attention</option>
-      </select>
-    </div>
+async function unlock() {
+  const pw = document.getElementById('pw').value;
+  if (!pw) return;
+  try {
+    const buf = Uint8Array.from(atob(CIPHERTEXT), c => c.charCodeAt(0));
+    const salt = buf.slice(0, 16);
+    const iv = buf.slice(16, 28);
+    const ct = buf.slice(28);
+    const enc2 = new TextEncoder();
+    const keyMat = await crypto.subtle.importKey('raw', enc2.encode(pw), 'PBKDF2', false, ['deriveKey']);
+    const key = await crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt, iterations: 100000, hash: 'SHA-256' },
+      keyMat, { name: 'AES-GCM', length: 256 }, false, ['decrypt']
+    );
+    const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, ct);
+    const html = new TextDecoder().decode(plain);
+    document.open();
+    document.write(html);
+    document.close();
+  } catch (e) {
+    document.getElementById('err').style.display = 'block';
+  }
+}
 
-    <div class="table-wrap">
-      <table id="itineraryTable">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>City / Leg</th>
-            <th>Category</th>
-            <th>Item / Event</th>
-            <th>Time / Window</th>
-            <th>Location / Details</th>
-            <th>Status, Ticket Link &amp; Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr data-city="Flight" data-status="Confirmed">
-            <td class="date-cell">Sat, Nov 21</td>
-            <td class="city-cell">ATL &rarr; CLT &rarr; MAD</td>
-            <td>Flight</td>
-            <td>Outbound to Madrid</td>
-            <td>Departs ATL 12:27 PM &middot; Arrives CLT 1:48 PM &middot; Departs CLT 4:05 PM &middot; Arrives MAD 5:45 AM (Nov 22)</td>
-            <td>AA 5293 (ATL &rarr; CLT) + AA 748 (CLT &rarr; MAD) &middot; Conf: <strong>MJIUCI</strong></td>
-            <td><span class="badge badge-ok">Confirmed (MJIUCI)</span><span class="note">Overnight transatlantic flight.</span></td>
-          </tr>
-          <tr data-city="Flight Seville" data-status="Confirmed">
-            <td class="date-cell">Sun, Nov 22</td>
-            <td class="city-cell">MAD &rarr; SVQ</td>
-            <td>Flight</td>
-            <td>Madrid to Seville</td>
-            <td>Departs MAD (T4) 9:55 AM &middot; Arrives SVQ 11:05 AM</td>
-            <td>IB 1755 (Iberia Express, A321neo) &middot; Conf: <strong>MN978</strong></td>
-            <td><span class="badge badge-ok">Confirmed (MN978)</span><span class="note">~4 hr 10 min layover at MAD.</span></td>
-          </tr>
-          <tr data-city="Seville" data-status="Confirmed">
-            <td class="date-cell">Sun, Nov 22</td>
-            <td class="city-cell">Seville</td>
-            <td>Stay</td>
-            <td>L&iacute;bere Seville Plaza Nueva</td>
-            <td>Check-in 3:00 PM (GMT+1)</td>
-            <td>Calle Albareda, 18, Old Town, 41001 Seville &middot; +34 954 055 483</td>
-            <td><span class="badge badge-ok">Confirmed</span><span class="note">Free cancellation (1 night).</span></td>
-          </tr>
-          <tr data-city="Seville" data-status="Confirmed">
-            <td class="date-cell">Sun, Nov 22</td>
-            <td class="city-cell">Seville</td>
-            <td>Attraction</td>
-            <td>Seville Cathedral &amp; La Giralda</td>
-            <td>4:00 PM (16:00)</td>
-            <td>Includes Church of El Salvador &middot; 2 Individual + 2 Student (ages 14&ndash;25, ID required) &middot; &euro;40.00</td>
-            <td><span class="badge badge-ok">Confirmed</span> (<code>26RJTKVQZZ</code> / <code>K8YSCQT5</code>)<br /><a class="ticket-link" href="https://drive.google.com/file/d/1nm6OuCpFfBs3G01REme-d125ilqqcPw5/view?usp=drive_link" target="_blank" rel="noopener">Open Ticket PDF &rarr;</a></td>
-          </tr>
-          <tr data-city="Seville" data-status="Confirmed Attention">
-            <td class="date-cell">Mon, Nov 23</td>
-            <td class="city-cell">Seville</td>
-            <td>Attraction</td>
-            <td>Royal Alc&aacute;zar of Seville</td>
-            <td>10:00 AM</td>
-            <td>General Ticket &middot; &euro;15.50</td>
-            <td><span class="badge badge-ok">Confirmed</span> (<code>AS01978948</code>)<br /><a class="ticket-link" href="https://drive.google.com/file/d/1apCXPBq2d7B2qsH0S4RvH3f9hgpACZic/view?usp=drive_link" target="_blank" rel="noopener">Open Ticket PDF &rarr;</a><span class="note">Comment: Overlaps with 11:00 AM hotel checkout.</span></td>
-          </tr>
-          <tr data-city="Seville" data-status="Attention">
-            <td class="date-cell">Mon, Nov 23</td>
-            <td class="city-cell">Seville</td>
-            <td>Stay</td>
-            <td>L&iacute;bere Seville Plaza Nueva</td>
-            <td>Check-out 11:00 AM (GMT+1)</td>
-            <td>Calle Albareda, 18, Old Town, 41001 Seville</td>
-            <td><span class="badge badge-warn">Timing Overlap</span><span class="note">Comment: Checkout right after 10:00 AM Alc&aacute;zar slot.</span></td>
-          </tr>
-          <tr data-city="Flight Seville Madrid" data-status="Attention">
-            <td class="date-cell">Mon, Nov 23</td>
-            <td class="city-cell">Seville &rarr; Madrid</td>
-            <td>Transit</td>
-            <td>Seville to Madrid Transfer</td>
-            <td>TBD (ahead of 4:00 PM check-in)</td>
-            <td>Options: Nonstop flight (SVQ &rarr; MAD, ~1h 10m) or rental car (~5&ndash;5.5h drive)</td>
-            <td><span class="badge badge-warn">To Book</span><span class="note">Train cancelled due to accident; car or flight under consideration.</span></td>
-          </tr>
-          <tr data-city="Madrid" data-status="Confirmed">
-            <td class="date-cell">Mon, Nov 23</td>
-            <td class="city-cell">Madrid</td>
-            <td>Stay</td>
-            <td>Madrid Airbnb</td>
-            <td>Check-in 4:00 PM (GMT+1)</td>
-            <td>C. del Nuncio, 11, Centro, 28005 Madrid &middot; +34 617 36 14 12</td>
-            <td><span class="badge badge-ok">Logged</span><span class="note">2 nights.</span></td>
-          </tr>
-          <tr data-city="Madrid" data-status="Planned">
-            <td class="date-cell">Tue, Nov 24</td>
-            <td class="city-cell">Madrid</td>
-            <td>Sightseeing</td>
-            <td>Plaza de Oriente &amp; Plaza de la Armer&iacute;a</td>
-            <td>Morning (before 11:30 AM Royal Palace)</td>
-            <td>Adjacent to Royal Palace (east plaza &amp; main courtyard)</td>
-            <td><span class="badge badge-plan">Planned</span><span class="note">Comment: Good pre-palace walk; leave buffer for 11:30 AM entry.</span></td>
-          </tr>
-          <tr data-city="Madrid" data-status="Confirmed">
-            <td class="date-cell">Tue, Nov 24</td>
-            <td class="city-cell">Madrid</td>
-            <td>Attraction</td>
-            <td>Royal Palace of Madrid</td>
-            <td>11:30 AM</td>
-            <td>Palacio Real de Madrid, Calle de Bail&eacute;n, s/n</td>
-            <td><span class="badge badge-ok">Confirmed</span> (<code>R132005106 - 5/8</code>, Code <code>8J22C99WFWXV2DTMY7WE</code>)<br /><a class="ticket-link" href="https://drive.google.com/file/d/1_j2XzPwdT9Gajf6YPzNzdG_yLrjnc1iW/view?usp=drive_link" target="_blank" rel="noopener">Open Ticket PDF &rarr;</a></td>
-          </tr>
-          <tr data-city="Madrid" data-status="Planned">
-            <td class="date-cell">Tue, Nov 24</td>
-            <td class="city-cell">Madrid</td>
-            <td>Attraction</td>
-            <td>Almudena Cathedral</td>
-            <td>After Royal Palace, before lunch (~1:00 PM &ndash; 2:15 PM)</td>
-            <td>Right next to Royal Palace</td>
-            <td><span class="badge badge-plan">Planned</span><span class="note">Comment: Fit in right after palace before lunch break.</span></td>
-          </tr>
-          <tr data-city="Madrid" data-status="Planned">
-            <td class="date-cell">Tue, Nov 24</td>
-            <td class="city-cell">Madrid</td>
-            <td>Sightseeing</td>
-            <td>Puerta de Alcal&aacute;, El Retiro Park, Palacio de Cibeles &amp; Crystal Palace</td>
-            <td>Afternoon (after lunch)</td>
-            <td>Retiro &amp; Cibeles corridor</td>
-            <td><span class="badge badge-plan">Planned</span><span class="note">Comment: Crystal Palace temporarily closed inside (exterior/pond viewing only); watch clock before heading to temple.</span></td>
-          </tr>
-          <tr data-city="Madrid" data-status="Planned">
-            <td class="date-cell">Tue, Nov 24</td>
-            <td class="city-cell">Madrid</td>
-            <td>Sightseeing</td>
-            <td>Temple of Debod</td>
-            <td>Arrive before 5:30 PM (sunset ~5:51 PM)</td>
-            <td>West of Royal Palace</td>
-            <td><span class="badge badge-plan">Planned</span><span class="note">Comment: Open Tue&ndash;Sun 10:00 AM&ndash;8:00 PM; arrive before 5:30 PM for sunset.</span></td>
-          </tr>
-          <tr data-city="Madrid" data-status="Planned">
-            <td class="date-cell">Tue, Nov 24</td>
-            <td class="city-cell">Madrid</td>
-            <td>Dining</td>
-            <td>Gran V&iacute;a + Dinner (Curry Masala / Artemisa Gran V&iacute;a / Bloved Veggie Corner)</td>
-            <td>Evening (after sunset; dinner opens 7:00 PM or 8:00 PM)</td>
-            <td>Gran V&iacute;a area</td>
-            <td><span class="badge badge-plan">Planned</span><span class="note">Comment: Bloved opens 7:00 PM; Curry Masala &amp; Artemisa open 8:00 PM.</span></td>
-          </tr>
-          <tr data-city="Madrid" data-status="Attention">
-            <td class="date-cell">Wed, Nov 25</td>
-            <td class="city-cell">Madrid</td>
-            <td>Stay</td>
-            <td>Madrid Airbnb</td>
-            <td>Check-out 11:00 AM (GMT+1)</td>
-            <td>C. del Nuncio, 11, Centro, 28005 Madrid</td>
-            <td><span class="badge badge-warn">Early Departure</span><span class="note">Comment: Train departs 10:27 AM&mdash;depart Airbnb earlier than 11:00 AM.</span></td>
-          </tr>
-          <tr data-city="Madrid" data-status="Attention">
-            <td class="date-cell">Wed, Nov 25</td>
-            <td class="city-cell">Madrid</td>
-            <td>Attraction / Dining</td>
-            <td>Triangle of Art (Reina Sof&iacute;a / Picasso, Prado, Thyssen) &amp; Mercado de San Miguel</td>
-            <td>Proposed before 10:27 AM train (opens 10:00 AM)</td>
-            <td>Atocha / Paseo del Prado / Centro</td>
-            <td><span class="badge badge-warn">Timing Conflict</span><span class="note">Comment: Not feasible right before a 10:27 AM train (10:00 AM opening + luggage/station transfer); move to an earlier Madrid slot.</span></td>
-          </tr>
-          <tr data-city="Flight Madrid Barcelona" data-status="Confirmed">
-            <td class="date-cell">Wed, Nov 25</td>
-            <td class="city-cell">Madrid &rarr; Barcelona</td>
-            <td>Train</td>
-            <td>Renfe AVE 03303</td>
-            <td>Departs 10:27 AM &middot; Arrives 1:44 PM</td>
-            <td>Madrid-Puerta de Atocha &rarr; Barcelona-Sants &middot; Elige fare &middot; Coach 13, Seat 12D &middot; &euro;139.40 total (&euro;34.85 pp)</td>
-            <td><span class="badge badge-ok">Confirmed</span> (Ticket <code>7683802129976</code>)</td>
-          </tr>
-          <tr data-city="Barcelona" data-status="Confirmed">
-            <td class="date-cell">Wed, Nov 25</td>
-            <td class="city-cell">Barcelona</td>
-            <td>Stay</td>
-            <td>Barcelona Airbnb</td>
-            <td>Check-in 4:00 PM (GMT+1)</td>
-            <td>Pg. de St. Joan, 60, Eixample, 08009 Barcelona &middot; +34 623 81 00 33</td>
-            <td><span class="badge badge-ok">Logged</span><span class="note">3 nights.</span></td>
-          </tr>
-          <tr data-city="Barcelona" data-status="Planned">
-            <td class="date-cell">Wed, Nov 25</td>
-            <td class="city-cell">Barcelona</td>
-            <td>Sightseeing</td>
-            <td>Gothic Quarter (Ciutat Vella)</td>
-            <td>Afternoon (~4:30 PM &ndash; 6:30 PM, after arrival/check-in &amp; before flamenco/dinner)</td>
-            <td>Ciutat Vella, Barcelona</td>
-            <td><span class="badge badge-plan">Planned</span><span class="note">Comment: Stroll medieval streets/plazas toward Pla&ccedil;a Reial before flamenco.</span></td>
-          </tr>
-          <tr data-city="Barcelona" data-status="Confirmed">
-            <td class="date-cell">Wed, Nov 25</td>
-            <td class="city-cell">Barcelona</td>
-            <td>Show</td>
-            <td>Los Tarantos Flamenco Show</td>
-            <td>7:30 PM (19:30; doors 7:15 PM)</td>
-            <td>Pla&ccedil;a Reial, 17, Barcelona &middot; Acceso Principal, General &middot; &euro;30.00</td>
-            <td><span class="badge badge-ok">Confirmed</span><br /><a class="ticket-link" href="https://drive.google.com/file/d/11ECa6ZYVTrED3l65wyICSE4WRXZ0tMgR/view?usp=drive_link" target="_blank" rel="noopener">Open Ticket PDF &rarr;</a></td>
-          </tr>
-          <tr data-city="Barcelona" data-status="Planned">
-            <td class="date-cell">Wed, Nov 25</td>
-            <td class="city-cell">Barcelona</td>
-            <td>Dining</td>
-            <td>Dinner at Saravana Bhavan</td>
-            <td>After flamenco (~8:25 PM)</td>
-            <td>La Rambla, 122, Ciutat Vella, 08002 Barcelona &middot; +34 934 55 11 72</td>
-            <td><span class="badge badge-plan">Added</span><span class="note">No reservation code noted.</span></td>
-          </tr>
-          <tr data-city="Barcelona" data-status="Attention">
-            <td class="date-cell">Thu, Nov 26</td>
-            <td class="city-cell">Barcelona</td>
-            <td>Activity</td>
-            <td>Morning Photo Session</td>
-            <td>~8:00 AM (before 10:15 AM Sagrada Fam&iacute;lia)</td>
-            <td>Around Sagrada Fam&iacute;lia / Pla&ccedil;a de Gaud&iacute; (to be booked)</td>
-            <td><span class="badge badge-warn">Considering / To Book</span><span class="note">Comment: ~1.5 hrs morning light; leave buffer before 10:15 AM entry.</span></td>
-          </tr>
-          <tr data-city="Barcelona" data-status="Confirmed">
-            <td class="date-cell">Thu, Nov 26</td>
-            <td class="city-cell">Barcelona</td>
-            <td>Attraction</td>
-            <td>Sagrada Fam&iacute;lia: Bas&iacute;lica</td>
-            <td>10:15 AM &ndash; 11:15 AM (GMT+1)</td>
-            <td>C/ Marina, 08013 Barcelona &middot; +34 932 080 414 &middot; 1 hour</td>
-            <td><span class="badge badge-ok">Confirmed</span> (Ref <code>110309396</code>)<br /><a class="ticket-link" href="https://drive.google.com/file/d/1XlzTmpFb0bbMtkXlWAywSgM_LfNV0wMW/view?usp=drive_link" target="_blank" rel="noopener">Open Ticket PDF &rarr;</a></td>
-          </tr>
-          <tr data-city="Barcelona" data-status="Attention">
-            <td class="date-cell">Fri, Nov 27</td>
-            <td class="city-cell">Barcelona</td>
-            <td>Open Day</td>
-            <td>Unscheduled / Free Day</td>
-            <td>All day</td>
-            <td>Barcelona</td>
-            <td><span class="badge badge-open">Open / Missing</span><span class="note">No tours, dining, or day trips added yet.</span></td>
-          </tr>
-          <tr data-city="Barcelona" data-status="Attention">
-            <td class="date-cell">Sat, Nov 28</td>
-            <td class="city-cell">Barcelona</td>
-            <td>Stay</td>
-            <td>Barcelona Airbnb</td>
-            <td>Check-out 11:00 AM (GMT+1)</td>
-            <td>Pg. de St. Joan, 60, Eixample, 08009 Barcelona</td>
-            <td><span class="badge badge-warn">Early Departure</span><span class="note">Comment: Flight departs 11:00 AM&mdash;leave early for BCN.</span></td>
-          </tr>
-          <tr data-city="Flight Barcelona" data-status="Confirmed">
-            <td class="date-cell">Sat, Nov 28</td>
-            <td class="city-cell">BCN &rarr; MIA &rarr; ATL</td>
-            <td>Flight</td>
-            <td>Return to Atlanta</td>
-            <td>Departs BCN 11:00 AM &middot; Arrives MIA 3:25 PM &middot; Departs MIA 5:50 PM &middot; Arrives ATL 7:56 PM</td>
-            <td>AA 113 (BCN &rarr; MIA) + MIA &rarr; ATL &middot; Conf: <strong>MJIUCI</strong></td>
-            <td><span class="badge badge-ok">Confirmed (MJIUCI)</span><span class="note">MIA&ndash;ATL flight number still optional.</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <script>
-    const searchInput = document.getElementById('searchInput');
-    const cityFilter = document.getElementById('cityFilter');
-    const statusFilter = document.getElementById('statusFilter');
-    const rows = document.querySelectorAll('#itineraryTable tbody tr');
-
-    function filterTable() {
-      const q = searchInput.value.toLowerCase().trim();
-      const city = cityFilter.value;
-      const status = statusFilter.value;
-
-      rows.forEach(row => {
-        const text = row.textContent.toLowerCase();
-        const rowCity = row.getAttribute('data-city') || '';
-        const rowStatus = row.getAttribute('data-status') || '';
-
-        const matchQuery = !q || text.includes(q);
-        const matchCity = city === 'ALL' || rowCity.includes(city);
-        const matchStatus = status === 'ALL' || rowStatus.includes(status);
-
-        row.style.display = (matchQuery && matchCity && matchStatus) ? '' : 'none';
-      });
-    }
-
-    searchInput.addEventListener('input', filterTable);
-    cityFilter.addEventListener('change', filterTable);
-    statusFilter.addEventListener('change', filterTable);
-  </script>
+document.getElementById('pw').addEventListener('keydown', e => { if (e.key === 'Enter') unlock(); });
+</script>
 </body>
 </html>
